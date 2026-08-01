@@ -181,63 +181,69 @@ public class StudentManager{
     }
     public void getTopPerformer() 
     {
-         if (map.isEmpty()) {
+         if (map.isEmpty()) 
+         {
              System.out.println("No students found.");
             return;
         }
-        Student top = null;
-        for (Student s : map.values()) {
-             if (top == null || s.getMarks() > top.getMarks()) {
+        Student top=null;
+        for (Student s:map.values()) 
+        {
+             if (top==null || s.getMarks()>top.getMarks()) 
+             {
                     top = s;
-               }
+             }
         }
-        System.out.println("\n--- Top Performer ---");
+        System.out.println("\nTop Performer:");
         System.out.println(top);
     }
     public void getLowestPerformer() 
     {
-        if (map.isEmpty()) {
+        if (map.isEmpty()) 
+        {
             System.out.println("No students found.");
             return;
         }
-        Student lowest = null;
-        for (Student s : map.values()) 
+        Student lowest=null;
+        for (Student s:map.values()) 
         {
-            if (lowest == null || s.getMarks() < lowest.getMarks()) 
+            if (lowest==null || s.getMarks()<lowest.getMarks()) 
             {
-                   lowest = s;
+                   lowest=s;
             }
         }
-        System.out.println("\n--- Lowest Performer ---");
+        System.out.println("\nLowest Performer:");
         System.out.println(lowest);
    }
    public void showStatistics() {
-        if (map.isEmpty()) {
+        if(map.isEmpty()) 
+        {
             System.out.println("No students found.");
             return;
         }
-        double total    = 0;
-        double highest  = 0;
-        double lowest   = 100;
-        int passCount   = 0;
-        int failCount   = 0;
-        String topName    = "";
-        String lowestName = "";
-        for (Student s : map.values()) 
+        double total=0;
+        double highest=0;
+        double lowest=100;
+        int passCount=0;
+        int failCount=0;
+        String topName= "";
+        String lowestName="";
+        for (Student s:map.values()) 
         {
-            double marks = s.getMarks();
-            total += marks;
+            double marks=s.getMarks();
+            total+=marks;
             if(marks>highest)
             {
-                highest = marks;
-                topName = s.getName();
+                highest=marks;
+                topName=s.getName();
             }
-            if (marks<lowest) 
+            if(marks<lowest) 
             {
-                lowest = marks;
-                lowestName = s.getName();
+                lowest=marks;
+                lowestName=s.getName();
             }
-            if (s.isPassed()) {
+            if(s.isPassed()) 
+            {
                 passCount++;
             } 
              else
@@ -245,8 +251,8 @@ public class StudentManager{
                 failCount++;
             }
         }
-        double average = total / map.size();
-        System.out.println("\n======== STATISTICS =========");
+        double average=total/map.size();
+        System.out.println("\nSTATISTICS:");
         System.out.println("Total Students  : " + map.size());
         System.out.println("Average Marks   : " + String.format("%.2f", average));
         System.out.println("Highest Marks   : " + highest + " (" + topName + ")");
@@ -254,6 +260,5 @@ public class StudentManager{
         System.out.println("Passed Students : " + passCount);
         System.out.println("Failed Students : " + failCount);
         System.out.println("Pass Percentage : " + String.format("%.2f", (passCount * 100.0 / map.size())) + "%");
-        System.out.println("==============================");
     }
 }
